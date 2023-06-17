@@ -25,6 +25,10 @@ function onFormSubmit(evt) {
     const { email, message } = evt.currentTarget.elements;
     console.log({ email: email.value.trim(), message: message.value.trim() });
     
+    if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
+  }
+
     if (localStorage.getItem(LOCAL_KEY)) {
         let data = JSON.parse(localStorage.getItem(LOCAL_KEY));
         console.log(data);
@@ -39,7 +43,7 @@ function feedbackFormState() {
    if (!data) return;
    formData = JSON.parse(data);
    refs.input.value = formData.email ?? '';
-    refs.textarea.value = formData.message ?? '';
-    formData = {};
+   refs.textarea.value = formData.message ?? '';
+ 
  }
     
